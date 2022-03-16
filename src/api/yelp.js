@@ -1,6 +1,5 @@
 import axios from "axios";
-import { REACT_APP_BASE_URL } from "@env";
-import { REACT_APP_API_KEY } from "@env";
+import { REACT_APP_BASE_URL, REACT_APP_API_KEY } from "@env";
 
 const API = axios.create({
   baseURL: REACT_APP_BASE_URL,
