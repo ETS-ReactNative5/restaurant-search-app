@@ -1,11 +1,26 @@
+import { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import BusinessService from "../api/business.service";
 import SearchBar from "../components/SearchBar/SearchBar";
 
 const SearchScreen = () => {
+  const [term, setTerm] = useState("");
+  const [results, setResults] = useState([]);
+
+  const searchHandler = async () => {
+    const data = BusinessService.searchBusiness(term);
+    setResults(data);
+  };
+
   return (
     <View>
-      <SearchBar />
+      <SearchBar
+        term={term}
+        onTermChange={setTerm}
+        onTermSubmit={searchHandler}
+      />
       <Text>Search Screen</Text>
+      <Text>Found {results.length} results!</Text>
     </View>
   );
 };
