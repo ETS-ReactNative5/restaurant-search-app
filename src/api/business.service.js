@@ -1,14 +1,13 @@
 import API from "./yelp";
-import Config from "react-native-config";
-
+import { REACT_APP_API_LIMIT } from "@env";
 class BusinessService {
   entity = `/businesses`;
 
-  async searchBusiness() {
+  async searchBusiness(term) {
     const fetchResponse = await API.get(`${this.entity}/search`, {
       params: {
-        limit: 50,
-        term: "pizza",
+        limit: REACT_APP_API_LIMIT,
+        term,
         location: "san jose",
       },
     });

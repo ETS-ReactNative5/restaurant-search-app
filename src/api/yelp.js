@@ -1,10 +1,11 @@
 import axios from "axios";
-import Config from "react-native-config";
+import { REACT_APP_BASE_URL } from "@env";
+import { REACT_APP_API_KEY } from "@env";
 
 const API = axios.create({
-  baseURL: Config.REACT_APP_BASE_URL,
+  baseURL: REACT_APP_BASE_URL,
   headers: {
-    Authorization: `Bearer ${Config.API_KEY}`,
+    Authorization: `Bearer ${REACT_APP_API_KEY}`,
   },
 });
 

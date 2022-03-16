@@ -6,10 +6,9 @@ import SearchBar from "../components/SearchBar/SearchBar";
 const SearchScreen = () => {
   const [term, setTerm] = useState("");
   const [results, setResults] = useState([]);
-
   const searchHandler = async () => {
-    const data = BusinessService.searchBusiness(term);
-    setResults(data);
+    const data = await BusinessService.searchBusiness(term);
+    return setResults(data);
   };
 
   return (
