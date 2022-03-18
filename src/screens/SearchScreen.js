@@ -21,15 +21,33 @@ const SearchScreen = () => {
         onTermChange={setTerm}
         onTermSubmit={() => searchHandler(term)}
       />
-      <Text>Search Screen</Text>
-      <Text>Found {results.length} results!</Text>
-      <ResultList results={filterResultsByPrice("$")} title='Cost Effective' />
-      <ResultList results={filterResultsByPrice("$$")} title='Bit Pricier' />
-      <ResultList results={filterResultsByPrice("$$$")} title='Big Spender' />
+      {results.length ? (
+        <View>
+          <Text styles={styles.results}>Found {results.length} results!</Text>
+          <ResultList
+            results={filterResultsByPrice("$")}
+            title='Cost Effective'
+          />
+          <ResultList
+            results={filterResultsByPrice("$$")}
+            title='Bit Pricier'
+          />
+          <ResultList
+            results={filterResultsByPrice("$$$")}
+            title='Big Spender'
+          />
+        </View>
+      ) : null}
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  results: {
+    fontFamily: "roboto",
+    fontSize: 22,
+    marginHorizontal: "auto",
+  },
+});
 
 export default SearchScreen;
