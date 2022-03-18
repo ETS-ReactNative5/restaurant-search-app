@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import Container from "../components/Container/Container";
 import useResults from "../hooks/useResults";
 import SearchBar from "../components/SearchBar/SearchBar";
 import ResultList from "../components/ResultList/ResultList";
@@ -15,14 +16,14 @@ const SearchScreen = () => {
   };
 
   return (
-    <View>
+    <Container>
       <SearchBar
         term={term}
         onTermChange={setTerm}
         onTermSubmit={() => searchHandler(term)}
       />
       {results.length ? (
-        <View>
+        <View styles={styles.container}>
           <Text styles={styles.results}>Found {results.length} results!</Text>
           <ResultList
             results={filterResultsByPrice("$")}
@@ -38,15 +39,15 @@ const SearchScreen = () => {
           />
         </View>
       ) : null}
-    </View>
+    </Container>
   );
 };
 
 const styles = StyleSheet.create({
   results: {
     fontFamily: "roboto",
-    fontSize: 22,
-    marginHorizontal: "auto",
+    fontSize: 26,
+    marginHorizontal: "50%",
   },
 });
 
