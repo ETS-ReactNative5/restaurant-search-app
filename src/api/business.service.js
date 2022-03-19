@@ -1,9 +1,9 @@
-import API from "./yelp";
 import { REACT_APP_API_LIMIT } from "@env";
+import API from "./yelp";
 class BusinessService {
   entity = `/businesses`;
 
-  async get(term, location) {
+  async getAll(term, location) {
     const fetchResponse = await API.get(`${this.entity}/search`, {
       params: {
         limit: REACT_APP_API_LIMIT,
@@ -13,6 +13,12 @@ class BusinessService {
     });
     const { businesses } = fetchResponse.data;
     return businesses;
+  }
+
+  async get(id) {
+    const fetchResponse = await API.get(`${this.entity}/${id}`);
+    const { data } = fetchResponse;
+    return data;
   }
 }
 

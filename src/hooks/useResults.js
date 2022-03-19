@@ -5,7 +5,7 @@ export default () => {
   const [results, setResults] = useState([]);
 
   const searchHandler = async (term) => {
-    const data = await BusinessService.get(term, "san jose");
+    const data = await BusinessService.getAll(term, "san jose");
     return setResults(data);
   };
 
